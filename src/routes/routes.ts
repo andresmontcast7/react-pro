@@ -1,8 +1,6 @@
 import { Component, lazy, LazyExoticComponent } from "react";
-import { LazyPage } from "../lazy-load/pages/LazyPage";
-import { LazyPage2 } from "../lazy-load/pages/LazyPage2";
-import { LazyPage3 } from "../lazy-load/pages/LazyPage3";
-
+import LazyLayout from "../lazy-layout/LazyLayout";
+import NoLazyLoad from "../lazy-layout/NoLazyLoad";
 
 type JSXComponent = ()=> JSX.Element;
 
@@ -14,27 +12,22 @@ interface Route{
 }
 
 
-const Lazy1 = lazy(()=> import ( /* webpackChunkName:"LAZY_PAGE1"*/'../lazy-load/pages/LazyPage'));
-const Lazy2 = lazy(()=> import (/* webpackChunkName:"LAZY_PAGE2"*/'../lazy-load/pages/LazyPage2'));
-const Lazy3 = lazy(()=> import (/* webpackChunkName:"LAZY_PAGE3"*/'../lazy-load/pages/LazyPage3'));
+const LazyLayoutes = lazy(()=> import ( /* webpackChunkName:"LAZY_Layout"*/'../lazy-layout/LazyLayout'));
+
 
 export const routes:Route[] = [
+
     {
-        to:'/lazy1',
-        path:'lazy1',
-        Component:Lazy1,
-        name:'Lazy 1'
+        to:'/lazylayout/',
+        path:'/lazylayout/*',// el path es donde definimos el route que conecta con el componente que queremos rederizar 
+        Component:LazyLayoutes,
+        name:'lazyLayout'
+
     },
     {
-        to:"/lazy2",
-        path:'lazy2',
-        Component:Lazy2,
-        name:'Lazy 2'
-    },
-    {
-        to:"/lazy3",
-        path:'lazy3',
-        Component:Lazy3,
-        name:'Lazy 3'
+        to:'/nolazy',
+        path:'noLazy',
+        Component:NoLazyLoad,
+        name:'No LazyLoad'
     }
 ]

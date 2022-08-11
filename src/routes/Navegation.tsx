@@ -24,7 +24,7 @@ export const Navegation = () => {
                         }
                         to={routes.to}
                       >
-                        {" "}
+                      
                         {routes.name}
                       </NavLink>
                     </li>
@@ -46,10 +46,10 @@ export const Navegation = () => {
               {/* <Route path="lazy1" element={<LazyPage></LazyPage>} />
         <Route path="lazy2" element={<LazyPage2></LazyPage2>} />
         <Route path="lazy3" element={<LazyPage3></LazyPage3>} /> */}
-              <Route
+              {/* <Route
                 path="/*"
                 element={<Navigate to="/lazy1" replace></Navigate>}
-              />
+              /> */}
             </Routes>
           </div>
         </BrowserRouter>
